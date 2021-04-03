@@ -1,0 +1,49 @@
+{% load static %}
+{% include "master.html" %}
+{% block "content" %}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"><br><a href="{% url 'add' %}"><h2 style="text-align: center">Add New Employee</h2></a></div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"><br><a href="{% url 'view' %}"><h2 style="text-align: center">View All Employee</h2></a></div>
+        <div class="col"></div>
+    </div>
+
+    {% if msg %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading" style="text-align: center">{{ msg }}!</h4>
+        </div>
+    {% endif %}
+    {% if data %}
+        <table class="table" align="center" style="width: 1200px">
+            <thead style="width: 400px">
+            <tr>
+                <th scope="col" colspan="4" style="text-align: center;font-size: 30px" width="400">Registered Employee
+                    Details
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>Id No</th>
+                <th>Name</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            {% for x in data %}
+                <tr>
+                    <td>{{ x.idno }}</td>
+                    <td>{{ x.name }}</td>
+                    <td><a href="{% url 'update' %}?idno={{ x.idno }}"><img src="{% static 'images/update.png' %}"
+                                                                            width="20" height="20"> </a></td>
+                    <td><a href="{% url 'delete' %}?idno={{ x.idno }}"><img src="{% static 'images/delete.png' %}"
+                                                                            width="20" height="20"></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

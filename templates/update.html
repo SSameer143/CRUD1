@@ -1,0 +1,62 @@
+{% include "master.html" %}
+{% block "content" %}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"><br>
+            <table class="table" width="400">
+                <thead>
+                <tr>
+                    <th scope="col" colspan="2" style="text-align: center;font-size: 40px">Employee Details</th>
+                </tr>
+                </thead>
+                <form action="{% url 'save' %}" method="post">
+                    {% csrf_token %}
+                <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">Id No</th>
+                    <td><input type="number" min="1" max="1000" name="t1" placeholder="Id No" value="{{ id }}" readonly></td>
+                </tr>
+                <tr>
+                    <th scope="row">Name</th>
+                    <td><input type="text" name="t2" placeholder="Enter Your Name" maxlength="30"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Designation</th>
+                    <td>
+                        <select name="t3">
+                            <option>Software Developer</option>
+                            <option>Tester</option>
+                            <option>Manager</option>
+                            <option>Student</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Salary</th>
+                    <td><input type="number" min="10000" max="1000000" name="t4" placeholder="Salary"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Gender</th>
+                    <td><input type="radio" name="t5" value="male" checked> Male <input type="radio" name="t5" value="female"> Female</td>
+                </tr>
+                <tr>
+                    <th scope="row">Contact No</th>
+                    <td><input type="tel" name="t6"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Email Id</th>
+                    <td><input type="email" name="t7"></td>
+                </tr>
+                <tr>
+                    <th scope="row" colspan="2" style="text-align: center"><button type="submit">Update</button> </th>
+                </tr>
+                </tbody>
+                    </form>
+            </table>
+        </div>
+        <div class="col"></div>
+    </div>
+{% endblock %}
